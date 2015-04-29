@@ -32,7 +32,7 @@ function getData(){
 				      "<ul><li>Full name: " + repo.full_name + "</li>" +
 				      "<li>Description: " + repo.description + "</li>" +
 				      "<li>Created at: " + repo.created_at + "</li>" +
-				      "</ul>");
+				      "</ul><div id=#files></div>");
 			files();
 	    }
 	});
