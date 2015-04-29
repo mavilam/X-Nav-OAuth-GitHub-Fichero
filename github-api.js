@@ -80,7 +80,8 @@ function selectFile() {
 
 function writeFile() {
 
-    repo.write('master', $("#filename").val(), $("#content").val();,
+    repo.write('master', $("#filename").val(),
+    		 $("#content").val(),
 		 "Using Github API", function(err) {
 		     console.log (err);
 		 });
