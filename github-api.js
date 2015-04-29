@@ -36,7 +36,7 @@ function getData(){
 				      "<input type='text'id='text'/> " +
 				      "<li>Files:<ul id='list_files'></ul></li></ul>");
 			
-			$("#write").click(writeRepo);
+			
 			listFiles();
 	    }
 	});
@@ -73,7 +73,7 @@ function writeRepo() {
 function signIn(){
 	access = hello("github");
     access.login({response_type: 'code'}).then( function(){
-		getToken();
+		readToken();
     }, function( e ){
 		alert('Signin error: ' + e.error.message);
     });
