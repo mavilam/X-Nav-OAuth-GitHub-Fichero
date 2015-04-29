@@ -62,7 +62,7 @@ function files() {
 				  "<button type='button' id='read'>" +
 				  "Read File!</button>" +
 				  "<textarea name='content' " +
-				  "id='content' rows='4' cols='40'>" +
+				  "id='content' rows='4' cols='40'><br>" +
 				  "</textarea></div>");
             $("#files li").click(selectFile);
 			$("#write").click(writeFile);
