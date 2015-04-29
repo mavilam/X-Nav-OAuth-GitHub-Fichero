@@ -34,18 +34,16 @@ function getData(){
 				      "<li>Created at: " + repo.created_at + "</li>" +
 				      "</ul><button id='write'>Write File</button>" +
 				      "<input type='text'id='text'/> " +
-				      "<li>Files:<ul id='list_files'></ul></li></ul>");
-			
-			
-			listFiles();
+				      "<li>Files:<ul id='files'></ul></li></ul>");
+			files();
 	    }
 	});
     
 };
 
-function listFiles() {
+function files() {
     repo.contents('master', '', function(error, contents) {
-        var repoList = $("#list_files");
+        var repoList = $("#files");
         if (error) {
             repoList.html("<p>Error code: " + error.error + "</p>");
         } else {
@@ -56,18 +54,43 @@ function listFiles() {
             }
             repoList.html("<li>" + 
                 files.join("</li><li>") +
-                "</li>");
+                "</li>"+
+                "</li></ul>" +
+				  "<div id='readwrite'>" +
+				  "<input type='text' name='filename' " +
+				  "id='filename' size='20' />" +
+				  "<button type='button' id='write'>" +
+				  "Write File!</button>" +
+				  "<button type='button' id='read'>" +
+				  "Read File!</button>" +
+				  "<textarea name='content' " +
+				  "id='content' rows='4' cols='40'>" +
+				  "</textarea></div>");
+            $("#files li").click(selectFile);
+			$("#write").click(writeFile);
+			$("#read").click(readFile);
          }
     });
+}
+
+function selectFile() {
+    element = $(this);
+    $("#filename").val(element.text());
 };
 
-function writeRepo() {
-    repo.write('master', 'datafile', 
-		 $("#text").val(),
-		 "Appending Text", function(err) {
-		     console.log (err)
+function writeFile() {
+
+    repo.write('master', $("#filename").val(), $("#content").val();,
+		 "Using Github API", function(err) {
+		     console.log (err);
 		 });
-    	$("#newForm").append("<h2>Success!!</h2>");
+};
+
+function readFile() {
+
+    repo.read('master', $("#filename").val(), function(err, data) {
+		$("#content").val(data);
+    });
 };
 
 function signIn(){
