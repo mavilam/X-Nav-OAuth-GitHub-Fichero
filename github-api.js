@@ -32,7 +32,7 @@ function getData(){
 				      "<ul><li>Full name: " + repo.full_name + "</li>" +
 				      "<li>Description: " + repo.description + "</li>" +
 				      "<li>Created at: " + repo.created_at + "</li>" +
-				      "</ul><button id='write'>Write File</button>" +
+				      "</ul>" +
 				      "<input type='text'id='text'/> " +
 				      "<li>Files:<ul id='files'></ul></li></ul>");
 			files();
@@ -52,11 +52,7 @@ function files() {
             for (var i = 0; i < len; i++) {
                 files.push(contents[i].name);
             }
-            repoList.html("<li>" + 
-                files.join("</li><li>") +
-                "</li>"+
-                "</li></ul>" +
-				  "<div id='readwrite'>" +
+            repoList.html("<div id='readwrite'>" +
 				  "<input type='text' name='filename' " +
 				  "id='filename' size='20' />" +
 				  "<button type='button' id='write'>" +
@@ -65,7 +61,10 @@ function files() {
 				  "Read File!</button>" +
 				  "<textarea name='content' " +
 				  "id='content' rows='4' cols='40'>" +
-				  "</textarea></div>");
+				  "</textarea></div><li>" + 
+                files.join("</li><li>") +
+                "</li>"+
+                "</li></ul>");
             $("#files li").click(selectFile);
 			$("#write").click(writeFile);
 			$("#read").click(readFile);
