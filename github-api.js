@@ -60,7 +60,7 @@ function files() {
 				  "<button type='button' id='write'>" +
 				  "Write File!</button>" +
 				  "<button type='button' id='read'>" +
-				  "Read File!</button>" +
+				  "Read File!</button><br>" +
 				  "<div><textarea name='content' " +
 				  "id='content' rows='4' cols='40'>" +
 				  "</textarea></div></div>");
